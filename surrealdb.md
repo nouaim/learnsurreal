@@ -1,23 +1,34 @@
-*Create first Table*
+## Create first Table
+
+```
 CREATE human:mark SET name="Mark", age=33, sex="Male";
 CREATE human:daniel SET name="Daniel", age=29, sex="Male";
+``` 
 
-*To Select*
+### To Select
+```
 SELECT sex, name FROM human;
 SELECT age, name FROM human WHERE age=29;
+```
 
-
-*Update*
+### Update
+```
 UPDATE human SET skills +=["swimming", "football"];
+```
 
-*One-to-One Relationship*
+## One-to-One Relationship
+```
 UPDATE human:daniel SET best_friend = human:mark
+```
 
-*Fetch Data*
+### Fetch Data
+```
 SELECT best_friend.name, best_friend.age FROM human:daniel;
+```
 
 
-*One-to-Many Relationship*
+## One-to-Many Relationship
+```
 CREATE car:tesla
 SET model='Model S', ev=true, price=99000;
 
@@ -29,45 +40,58 @@ UPDATE human:daniel SET cars=['car:tesla', 'car:renault'];
 UPDATE car:tesla SET owner = human:daniel;
 UPDATE car:renault SET owner = human:daniel;
 
+```
 
-*Query the data*
+### Query the data
+```
 SELECT cars FROM human:daniel;
 SELECT * FROM car WHERE owner==human:daniel;
 
+```
 
-*hasmanythrough relationship*
+## hasmanythrough relationship
+```
 CREATE part:tire SET brand='IRIS', size=5;
 CREATE part:gastank SET brand='NAFTAL', size=10;
 CREATE part:battery SET brand='ELEC', size=9;
 
+```
 
+```
 UPDATE car:tesla SET parts=['part:tire', 'part:battery'];
 UPDATE car:renault SET parts=['part:tire', 'part:gastank'];
 
+```
 
-*Query*
+### Query
+```
 SELECT parts FROM car:tesla;
 SELECT cars.parts.brand FROM human:daniel;
 
+```
 
 
-*Graphs*
+## Graphs
+```
 RELATE human:daniel -> drove -> car:tesla SET when = time::now(), destination= 'Market';
 RELATE human:mark -> drove -> car:tesla SET when = time::now(), destination= 'Library';
 
-*Query*
+```
+### Query
+```
 SELECT ->drove->car FROM human;
 
-*change the arrows to the other direction to get the humans who drove the car*
-SELECT <-drove<-human from car;
+```
+**change the arrows to the other direction to get the humans who drove the car**
+
+```SELECT <-drove<-human from car ```
+
+**Select everything from the drove table**
+
+```SELECT * FROM drove;```
 
 
-*Select everything from the drove table*
-SELECT * FROM drove;
-
-
-
-*Cli commands*
+# Cli commands
 
 - To run in memeroy (database won't be saved)
 
