@@ -105,3 +105,19 @@ SELECT ->drove->car FROM human;
 - To use it on command line:
 
 ```surreal sql --conn http://localhost:8000 -u root -p root```
+
+
+
+
+## to use the api:
+
+Use thunder client or postman:
+### Headers
+{'Accept': application/json',
+'NS': 'test',
+'DB': 'test',
+}
+
+### Authentication:
+
+basic: root, root
