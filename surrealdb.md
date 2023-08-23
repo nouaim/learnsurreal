@@ -93,11 +93,11 @@ SELECT ->drove->car FROM human;
 
 # Cli commands
 
-- To run in memeroy (database won't be saved)
+- To run in memeory (database won't be saved)
 
 ```user@localhost % surreal start --log trace --user root --pass root memory```
 
-- to save in file:
+- To save in file:
 
 ```user@localhost % surreal start --log trace --user root --pass root file:// ./Suerrealdb```
 
@@ -109,7 +109,7 @@ SELECT ->drove->car FROM human;
 
 
 
-## to use the api:
+## To use the api:
 
 Use thunder client or postman:
 ### Headers
